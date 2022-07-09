@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="validation.html">Encryption</a>
+        <a href="decryption.html">Decryption</a>
+        <div id="indicator"></div>
+    </nav>
+
+    <div class="">
+        <form class="decryption">
+            <input id="cText" type="text" class="feedback-input" autocomplete="off" placeholder="Cipher Text" />
+            <input id="sk" type="text" class="feedback-input" placeholder="Key" />
+            <textarea id="ta" name="text" class="feedback-input" placeholder="Decyption"></textarea>
+            <button id="btn1" class="btnDecrypt">SUBMIT</button>
+
+
+        </form>
+
+
+    </div>
+
+    <!-- <script src="./Js/index.js"></script> -->
+    <script>
+        const btnSubmit1 = document.getElementById("btn1").addEventListener('click', function (event) {
+            event.preventDefault();
+            console.log('clicked');
+            const ct = document.getElementById("cText").value;
+            // ct.innerText=localStorage.getItem('cipher');
+            const key = document.getElementById("sk").value;
+            const textA = document.getElementById("ta");
+            const decrypted = CryptoJS.AES.decrypt(ct, key);
+            console.log(decrypted);
+            textA.value = decrypted.toString(CryptoJS.enc.Utf8);;
+            // window.confirm(decrypted);
+        });
+
+    </script>
+</body>
+
+</html>
